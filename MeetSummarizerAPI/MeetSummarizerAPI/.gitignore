@@ -1,0 +1,27 @@
+# Compiled files
+/bin/
+//obj/
+/out/
+/publish/
+/node_modules/
+
+/# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/*.iml
+
+# Logs and user-specific files
+*.log
+/logs/
+/*.user
+/.vs/
+/.env
+
+# Miscellaneous
+.DS_Store
+Thumbs.db

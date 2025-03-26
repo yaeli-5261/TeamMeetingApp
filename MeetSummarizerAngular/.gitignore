@@ -1,0 +1,23 @@
+# Angular specific
+/node_modules/
+/dist/
+/out-tsc/
+/.angular/
+
+/# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/*.iml
+
+# Dependency directories
+/.pnp/
+/.pnp.js
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
