@@ -20,7 +20,7 @@ public class S3Service
             RegionEndpoint.GetBySystemName(config["AWS:Region"])
         );
     }
-
+    
     public async Task<string> UploadFileAsync(Stream fileStream, string fileName)
     {
         var request = new PutObjectRequest
@@ -35,14 +35,28 @@ public class S3Service
         await s3Client.PutObjectAsync(request);
         return $"https://{bucketName}.s3.amazonaws.com/{fileName}";
     }
-
-    public async Task<string> GetDownloadUrlAsync(string fileName)
+    public async Task<string> GeneratePresignedUrlAsync(string fileName, string contentType)
     {
-        var key = $"users/{fileName}"; // נתיב כולל תיקיה
+        var key = fileName; 
 
         var request = new GetPreSignedUrlRequest
         {
-            BucketName = "files-warranty",
+            BucketName = "meet-summarizer-files",
+            Key = key,
+            Verb = HttpVerb.PUT,
+            Expires = DateTime.UtcNow.AddMinutes(60),
+            ContentType = contentType
+        };
+
+        return s3Client.GetPreSignedURL(request);
+    }
+    public async Task<string> GetDownloadUrlAsync(string fileName)
+    {
+        var key = fileName; 
+
+        var request = new GetPreSignedUrlRequest
+        {
+            BucketName = "meet-summarizer-files",
             Key = key,
             Verb = HttpVerb.GET,
             Expires = DateTime.UtcNow.AddMinutes(60) // תוקף של שעה

@@ -57,10 +57,11 @@ namespace MeetSummarizerAPI.Controllers
         {
             var userRole = await _userService.GetUserByNameAndPasswordAsync(model.Password, model.UserName);
 
+
             // כאן יש לבדוק את שם המשתמש והסיסמה מול מסד הנתונים
             if (userRole != null)
             {
-                var token = _authService.GenerateJwtToken(model.UserName, new[] { userRole.Role.RoleName });
+                var token = _authService.GenerateJwtToken(model.UserName, new[] { userRole.Role.RoleName },userRole.Id);
 
                 // החזרת ה-User עם ה- teamId
                 return Ok(new
@@ -112,7 +113,7 @@ namespace MeetSummarizerAPI.Controllers
                 return BadRequest("Error creating user");
 
             // יצירת טוקן JWT עם שם התפקיד
-            var token = _authService.GenerateJwtToken(createdUser.UserName, new[] { newUser.Role.RoleName });
+            var token = _authService.GenerateJwtToken(createdUser.UserName, new[] { newUser.Role.RoleName },newUser.Id);
 
             return Ok(new { Token = token, User = newUser });
         }

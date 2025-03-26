@@ -372,6 +372,22 @@
   },
   {
     "ContainingType": "UploadController",
+    "Method": "GetDownloadUrl",
+    "RelativePath": "api/upload/download-url",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UploadController",
     "Method": "GetPresignedUrl",
     "RelativePath": "api/upload/presigned-url",
     "HttpMethod": "GET",
@@ -380,6 +396,11 @@
     "Parameters": [
       {
         "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "contentType",
         "Type": "System.String",
         "IsRequired": false
       }

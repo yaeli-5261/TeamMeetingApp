@@ -2,6 +2,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MeetingDTO, MeetingPostDTO } from "../models/meetingTypes";
+import { getCookie } from "../components/login/SignIn";
 
 
 const API_URL = "https://localhost:7214/api/Meeting";
@@ -58,7 +59,13 @@ export const fetchMeetingsByTeam = createAsyncThunk(
   "meetings/fetchMeetingsByTeam",
   async ({ teamId }: { teamId: number }, thunkAPI) => {
     try {
-      const response = await axios.get(`/api/meeting/team/${teamId}`);
+      const token = getCookie('auth_token');
+      const response = await axios.get(`/api/meeting/team/${teamId}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+     
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue((error as any).response?.data || "An unknown error occurred");

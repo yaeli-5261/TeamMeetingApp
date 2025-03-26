@@ -10,14 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 public class UploadController : ControllerBase
 {
     private readonly IAmazonS3 _s3Client;
-
-    public UploadController(IAmazonS3 s3Client)
+    private S3Service S3Service;
+    public UploadController(IAmazonS3 s3Client, S3Service s3Service)
     {
         _s3Client = s3Client;
+        S3Service = s3Service;
     }
 
     [HttpGet("presigned-url")]
-    public async Task<IActionResult> GetPresignedUrl([FromQuery] string fileName)
+    public async Task<IActionResult> GetPresignedUrl([FromQuery] string fileName, [FromQuery] string contentType)
     {
         if (string.IsNullOrEmpty(fileName))
             return BadRequest("שם הקובץ נדרש");
@@ -28,7 +29,8 @@ public class UploadController : ControllerBase
             Key = fileName, // קבצים נשמרים בתיקיית exams
             Verb = HttpVerb.PUT,
             Expires = DateTime.UtcNow.AddMinutes(2000),
-            ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            //ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            ContentType=contentType
         };
         try
         {
@@ -55,14 +57,12 @@ public class UploadController : ControllerBase
     //}
 
 
-
     // ⬇️ שלב 2: קבלת URL להורדת קובץ מה-S3
-
-    //[HttpGet("download-url")]
-    //public async Task<IActionResult> GetDownloadUrl([FromQuery] string fileName)
-    //{
-    //    var url = await _s3Client.GetDownloadUrlAsync(fileName);
-    //    return Ok(new { downloadUrl = url });
-    //}
+    [HttpGet("download-url")]
+    public async Task<IActionResult> GetDownloadUrl([FromQuery] string fileName)
+    {
+        var url = await S3Service.GetDownloadUrlAsync(fileName);
+        return Ok(new { downloadUrl = url });
+    }
 }
 

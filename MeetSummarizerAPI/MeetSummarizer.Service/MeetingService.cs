@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +36,8 @@ namespace MeetSummarizer.Service
         //שליפה לפי צוות
         public async Task<List<MeetingDTO>> GetMeetingsByTeamId(int teamId)
         {
+           
+
             var meetings = await _managerRepository.meetingRepository.GetMeetingsByTeamIdAsync(teamId);
             return _mapper.Map<List<MeetingDTO>>(meetings);
         }

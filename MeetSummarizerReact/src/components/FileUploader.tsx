@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { useParams } from "react-router-dom";
+import { getCookie } from "./login/SignIn";
 
 export const FileUploader = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -30,12 +31,18 @@ export const FileUploader = () => {
             alert("❌ לא נמצא meetingId ב-URL.");
             return;
         }
-
+   
+        debugger
         try {
             // שלב 1: בקשת Presigned URL מהשרת
             const response = await axios.get('https://localhost:7214/api/upload/presigned-url', {
-                params: { fileName: file.name },
-                
+                params: { 
+                    fileName: file.name ,
+                    contentType:file.type
+                },
+                headers: {
+                    "Authorization": `Bearer ${getCookie("auth_token")}`,
+                  },
             });
             // https://meet-summarizer-files.s3.eu-north-1.amazonaws.com/%D7%92%D7%99%D7%91%D7%95%D7%99+%D7%9C%D7%A8%D7%A9%D7%99%D7%9E%D7%AA+%D7%A4%D7%92%D7%99%D7%A9%D7%95%D7%AA.docx
             const presignedUrl = response.data.url;

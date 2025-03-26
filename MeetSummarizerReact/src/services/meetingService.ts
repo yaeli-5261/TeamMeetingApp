@@ -1,10 +1,11 @@
 import axios from "axios";
 import { MeetingDTO } from "../models/meetingTypes";
+import { getCookie } from "../components/login/SignIn";
 
 const API_URL = "https://localhost:7214/api/Meeting";
 
 // קבלת טוקן מה-LocalStorage
-const getAuthToken = () => localStorage.getItem("token");
+const getAuthToken = () => getCookie("auth_token");
 
 // קבלת teamId של המשתמש המחובר
 const getUserTeamId = (): number | null => {
@@ -36,6 +37,8 @@ export const fetchMeetingsByTeam = async (): Promise<MeetingDTO[]> => {
         console.error("❌ Error fetching meetings:", error);
         return [];
     }
+   
+   
 };
 
 

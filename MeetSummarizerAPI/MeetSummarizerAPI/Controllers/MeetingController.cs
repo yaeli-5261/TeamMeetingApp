@@ -5,12 +5,14 @@ using MeetSummarizer.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 
 namespace MeetSummarizer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class MeetingController : ControllerBase
     {
         private readonly IMeetingService _meetingService;
@@ -35,6 +37,9 @@ namespace MeetSummarizer.API.Controllers
         [HttpGet("team/{teamId}")]
         public async Task<ActionResult<List<MeetingDTO>>> GetByTeamId(int teamId)
         {
+           
+            //var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
             var meetings = await _meetingService.GetMeetingsByTeamId(teamId);
             if (meetings == null)
             {
@@ -56,6 +61,7 @@ namespace MeetSummarizer.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] MeetingPostDTO meetingDto)
         {
+
             var meeting = _mapper.Map<Meeting>(meetingDto);
             await _meetingService.AddMeeting(meeting);
             return CreatedAtAction(nameof(GetById), new { id = meeting.Id }, _mapper.Map<MeetingDTO>(meeting));

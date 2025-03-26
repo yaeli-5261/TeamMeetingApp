@@ -5,6 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store/store";
 import { signIn } from "../../store/authSlice";
 
+export const getCookie=(name: string) =>{
+
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+
+  if (parts.length === 2) {
+      return parts.pop()?.split(';').shift() || '';
+  }
+  return '';
+}
+
 const SignIn = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +28,10 @@ const SignIn = () => {
     try {
       // שליחה של הנתונים ל-Redux
       const result = await dispatch(signIn({ userName: name, password }));
-
+      const token = result.payload.token;
+      document.cookie = `auth_token=${token}; path=/; secure; samesite=strict;`;
+      console.log("Token from server:", getCookie('auth_token'));
+      
       // תהליך שמוודא שהתוצאה היא הצלחה
       if (signIn.fulfilled.match(result)) {
         const userData = result.payload; // { token, user: { teamId, userName, ... } }
