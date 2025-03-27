@@ -17,7 +17,7 @@ export const getCookie=(name: string) =>{
 }
 
 const SignIn = () => {
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const SignIn = () => {
     e.preventDefault();
     try {
       // שליחה של הנתונים ל-Redux
-      const result = await dispatch(signIn({ userName: name, password }));
+      const result = await dispatch(signIn({ email, password }));
       const token = result.payload.token;
       document.cookie = `auth_token=${token}; path=/; secure; samesite=strict;`;
       console.log("Token from server:", getCookie('auth_token'));
@@ -55,7 +55,7 @@ const SignIn = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
-      <TextField label="Name" type="text" value={name} onChange={(e) => setName(e.target.value)} required fullWidth />
+      <TextField label="Email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} required fullWidth />
       <TextField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required fullWidth />
       <Button type="submit" variant="contained" color="primary" disabled={loading}>
         {loading ? "Signing in..." : "Sign In"}

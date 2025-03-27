@@ -4,9 +4,9 @@ import { Button, Typography, Container, Box, IconButton } from "@mui/material";
 import { Edit } from "lucide-react";
 import UpdateMeetingDialog from "./UpdateMeetingDialog";
 import axios from "axios";
-import FileUploader from "../FileUploader";
 import { MeetingDTO } from "../../models/meetingTypes";
 import { fetchMeetingById } from "../../services/meetingService";
+import { FileUploader } from "../FileUploader";
 
 export default function MeetingDetails() {
   const { meetingId } = useParams<{ meetingId: string }>();
@@ -56,11 +56,6 @@ export default function MeetingDetails() {
         <Typography variant="body1"><strong>Transcript File:</strong> {meeting.linkTranscriptFile ? (
           <a href={meeting.linkTranscriptFile} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "#007bff", fontWeight: "bold" }}>
             {meeting.linkTranscriptFile}
-          </a>
-        ) : "No File"}</Typography>
-        <Typography variant="body1"><strong>Origin File:</strong> {meeting.linkOrinignFile ? (
-          <a href={meeting.linkOrinignFile} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "#007bff", fontWeight: "bold" }}>
-            {meeting.linkOrinignFile}
           </a>
         ) : "No File"}</Typography>
       </Box>

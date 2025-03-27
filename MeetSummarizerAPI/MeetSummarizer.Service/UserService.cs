@@ -29,9 +29,9 @@ public class UserService :IUserService
         return await _managerRepository.userRepository.GetUserByIdAsync(id);
     }
 
-    public async Task<User> GetUserByNameAndPasswordAsync(string password,string name)
+    public async Task<User> GetUserByNameAndPasswordAsync(string password,string email)
     {
-        return await _managerRepository.userRepository.GetUserByNameAndPasswordAsync(password,name);
+        return await _managerRepository.userRepository.GetUserByNameAndPasswordAsync(password,email);
     }
 
     public async Task<User> AddUser(User user)

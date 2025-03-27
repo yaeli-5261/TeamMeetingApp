@@ -55,13 +55,13 @@ namespace MeetSummarizerAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            var userRole = await _userService.GetUserByNameAndPasswordAsync(model.Password, model.UserName);
+            var userRole = await _userService.GetUserByNameAndPasswordAsync(model.Password, model.Email);
 
 
             // כאן יש לבדוק את שם המשתמש והסיסמה מול מסד הנתונים
             if (userRole != null)
             {
-                var token = _authService.GenerateJwtToken(model.UserName, new[] { userRole.Role.RoleName },userRole.Id);
+                var token = _authService.GenerateJwtToken(model.Email, new[] { userRole.Role.RoleName },userRole.Id);
 
                 // החזרת ה-User עם ה- teamId
                 return Ok(new

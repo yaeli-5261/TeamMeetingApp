@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PlusCircle, Edit } from "lucide-react";
 import { Card, CardContent, Typography, Button, Container, IconButton, Box, Avatar } from "@mui/material";
-import FileUploader from "../FileUploader";
+// import FileUploader from "../FileUploader";
 import UpdateMeetingDialog from "./UpdateMeetingDialog";
 import { MeetingDTO } from "../../models/meetingTypes";
 import { fetchMeetingsByTeam } from "../../store/meetingSlice";
@@ -19,7 +19,7 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
   const [loading, setLoading] = useState(!meetingsFromProps);
   const [selectedMeeting, setSelectedMeeting] = useState<MeetingDTO | null>(null);
   const navigate = useNavigate();
-const user= useSelector((state: RootState) => state.Auth.user);
+  const user= useSelector((state: RootState) => state.Auth.user);
   useEffect(() => {
     if (!meetingsFromProps) {
       const getMeetings = async () => {

@@ -28,9 +28,9 @@ namespace MeetSummarizer.Data.Repositories
             return await _context.Users.Include(u=>u.Role).FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<User> GetUserByNameAndPasswordAsync(string password, string name)
+        public async Task<User> GetUserByNameAndPasswordAsync(string password, string email)
         {
-            return await _context.Users.Include(u=>u.Role).FirstOrDefaultAsync(u => u.Password == password && u.UserName == name);
+            return await _context.Users.Include(u=>u.Role).FirstOrDefaultAsync(u => u.Password == password && u.Email == email);
         }
         //המקורי 
         public async Task<User> AddUserAsync(User user)

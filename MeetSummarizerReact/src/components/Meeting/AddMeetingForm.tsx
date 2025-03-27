@@ -1,20 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store/store"; // ודא שזה הנתיב הנכון
 import { TextField, Button, Paper, Typography, Box } from "@mui/material";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import { motion } from "framer-motion";
 import { addMeeting } from "../../store/meetingSlice";
 
 export default function AddMeetingForm() {
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
+    // קבלת ה-teamId מהמשתמש המחובר
+    const userData = localStorage.getItem("user");
+    const user = userData ? JSON.parse(userData) : null;
+    const teamId = user?.teamId || null; // ודא שיש teamId תקף
+
     const [meetingData, setMeetingData] = useState({
         name: "",
         date: "",
         linkTranscriptFile: "",
         linkOrinignFile: "",
-        teamId:0
+        teamId: teamId, // מוודא שה-ID של הצוות נשלח
     });
-
-    const navigate = useNavigate();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMeetingData({ ...meetingData, [e.target.name]: e.target.value });
@@ -23,13 +31,22 @@ export default function AddMeetingForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const addedMeeting =await addMeeting(meetingData);
-        if (addedMeeting) {
-            console.log("✅ Meeting added successfully!", addedMeeting);
-            setMeetingData({ name: "", date: "", linkTranscriptFile: "", linkOrinignFile: "" ,teamId:0}); // איפוס הטופס
-            navigate("/meetings"); // מעבר חזרה לרשימת הישיבות
-        } else {
-            console.error("❌ Error adding meeting!");
+        if (!meetingData.teamId) {
+            alert("❌ Team ID is missing. Please try again.");
+            return;
+        }
+
+        try {
+            const addedMeeting = await dispatch(addMeeting(meetingData)).unwrap();
+
+            if (addedMeeting) {
+                console.log("✅ Meeting added successfully!", addedMeeting);
+                setMeetingData({ name: "", date: "", linkTranscriptFile: "", linkOrinignFile: "", teamId: teamId }); // איפוס הטופס
+                navigate("/meetings"); // חזרה לרשימה
+            }
+        } catch (error) {
+            console.error("❌ Error adding meeting:", error);
+            alert("❌ Failed to add meeting. Please try again.");
         }
     };
 

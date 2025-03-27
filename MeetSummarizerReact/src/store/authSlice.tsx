@@ -9,10 +9,10 @@ const API_URL = "https://localhost:7214/api/Auth";
 // פעולה להתחברות
 export const signIn = createAsyncThunk(
     "Auth/login",
-    async (user: { userName: string; password: string }, thunkAPI) => {
+    async (user: { email: string; password: string }, thunkAPI) => {
         try {
             const res = await axios.post(`${API_URL}/login`, {
-                userName: user.userName,
+                email: user.email,
                 password: user.password
             });
             return res.data; 

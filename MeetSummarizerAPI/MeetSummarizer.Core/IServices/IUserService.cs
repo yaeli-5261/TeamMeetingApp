@@ -9,7 +9,7 @@ namespace MeetSummarizer.Core.Interfaces
     {
         Task<List<User>> GetAllUsers();
         Task<User> GetUserById(int id);
-        Task<User> GetUserByNameAndPasswordAsync(string password,string name);
+        Task<User> GetUserByNameAndPasswordAsync(string password,string email);
         Task<User> AddUser(User user);
         Task UpdateUser(int id, User user);
         Task DeleteUser(int id);

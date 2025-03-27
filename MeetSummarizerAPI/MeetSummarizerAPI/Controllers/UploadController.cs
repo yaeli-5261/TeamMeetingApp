@@ -34,7 +34,9 @@ public class UploadController : ControllerBase
         };
         try
         {
-            string url = _s3Client.GetPreSignedURL(request);
+            var url = await S3Service.GeneratePresignedUrlAsync(fileName, contentType);
+
+            //string url = _s3Client.GeneratePresignedUrlAsync(request);
             return Ok(new { url });
         }
         catch (AmazonS3Exception ex)

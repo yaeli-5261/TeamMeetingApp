@@ -1,5 +1,5 @@
 
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction, AsyncThunkAction, ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { MeetingDTO, MeetingPostDTO } from "../models/meetingTypes";
 import { getCookie } from "../components/login/SignIn";
@@ -60,12 +60,12 @@ export const fetchMeetingsByTeam = createAsyncThunk(
   async ({ teamId }: { teamId: number }, thunkAPI) => {
     try {
       const token = getCookie('auth_token');
-      const response = await axios.get(`/api/meeting/team/${teamId}`,{
+      const response = await axios.get(`${API_URL}/team/${teamId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-     
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue((error as any).response?.data || "An unknown error occurred");
@@ -90,7 +90,7 @@ export const addMeeting = createAsyncThunk(
   "meetings/addMeeting",
   async (meeting: MeetingPostDTO, { rejectWithValue }) => {
     try {
-      const response = await axios.post("/api/Meeting", meeting);
+      const response = await axios.post(API_URL, meeting);
       return response.data as MeetingDTO;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || "Failed to add meeting");
@@ -103,7 +103,7 @@ export const deleteMeeting = createAsyncThunk(
   "meetings/deleteMeeting",
   async (id: number, { rejectWithValue }) => {
     try {
-      await axios.delete(`/api/meeting/${id}`);
+      await axios.delete(`${API_URL}/${id}`);
       return id;
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || "Failed to delete meeting");
@@ -114,7 +114,7 @@ export const deleteMeeting = createAsyncThunk(
 // Create the slice
 const meetingSlice = createSlice({
   name: "meetings",
-  initialState: { list: [] as MeetingDTO[], loading: true },
+  initialState: { list: [] as MeetingDTO[], loading: false },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -125,6 +125,8 @@ const meetingSlice = createSlice({
       .addCase(fetchMeetings.fulfilled, (state, action) => {
         state.loading = false;
         state.list = action.payload;
+        console.log(state.list);
+
       })
       .addCase(fetchMeetings.rejected, (state, action) => {
         state.loading = false;
@@ -171,3 +173,4 @@ const meetingSlice = createSlice({
 });
 
 export default meetingSlice;
+
