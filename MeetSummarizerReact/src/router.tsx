@@ -1,12 +1,13 @@
 import { createBrowserRouter, Outlet } from "react-router-dom"; // תיקון: שינוי ל-"react-router-dom"
 import HomePage from "./components/Pages/HomePage";
 import Layout from "./components/Layout";
-import FileUploader from "./components/FileUploader";
+import FileUploader from "./components/File/FileUploader";
 import MeetingsPage from "./components/Pages/MeetingsPage";
 import SignIn from "./components/login/SignIn";
 import AddMeetingForm from "./components/Meeting/AddMeetingForm";
 import MeetingDetails from "./components/Meeting/MeetingDetails";
 import UpdateMeetingDialog from "./components/Meeting/UpdateMeetingDialog";
+import { AppSidebar } from "./components/Pages/sideBar";
 
 
 export const router = createBrowserRouter([
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
         element: (
             <Layout>
                 <Outlet />
+                <AppSidebar />
             </Layout>
         ), 
         children: [

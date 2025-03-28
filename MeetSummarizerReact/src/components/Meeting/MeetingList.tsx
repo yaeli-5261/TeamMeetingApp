@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PlusCircle, Edit } from "lucide-react";
-import { Card, CardContent, Typography, Button, Container, IconButton, Box, Avatar } from "@mui/material";
-// import FileUploader from "../FileUploader";
+import { PlusCircle } from "lucide-react";
+import { Card, CardContent, Typography, Button, Container, Box, Avatar, TextField } from "@mui/material";
 import UpdateMeetingDialog from "./UpdateMeetingDialog";
 import { MeetingDTO } from "../../models/meetingTypes";
 import { fetchMeetingsByTeam } from "../../store/meetingSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import MeetingSearch from "./MeetingSearch ";
 
 interface MeetingListProps {
   meetings?: MeetingDTO[];
@@ -18,8 +18,10 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
   const [meetings, setMeetings] = useState<MeetingDTO[]>(meetingsFromProps || []);
   const [loading, setLoading] = useState(!meetingsFromProps);
   const [selectedMeeting, setSelectedMeeting] = useState<MeetingDTO | null>(null);
+  const [searchQuery, setSearchQuery] = useState(""); // הוספת state לחיפוש
   const navigate = useNavigate();
-  const user= useSelector((state: RootState) => state.Auth.user);
+  const user = useSelector((state: RootState) => state.Auth.user);
+
   useEffect(() => {
     if (!meetingsFromProps) {
       const getMeetings = async () => {
@@ -36,6 +38,11 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
       prevMeetings.map((meeting) => (meeting.id === updatedMeeting.id ? updatedMeeting : meeting))
     );
   };
+
+  // פונקציית חיפוש
+  const filteredMeetings = meetings.filter((meeting) =>
+    meeting.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <Container maxWidth="md" sx={{ py: 5, bgcolor: "#f9f9f9", borderRadius: 3, boxShadow: 3 }}>
@@ -60,11 +67,14 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
           </Button>
         </Box>
 
+        {/* מנוע החיפוש */}
+        <MeetingSearch onSearch={setSearchQuery} />
+
         {loading ? (
           <Typography textAlign="center" color="gray">טוען...</Typography>
-        ) : meetings.length > 0 ? (
+        ) : filteredMeetings.length > 0 ? (
           <motion.div initial="hidden" animate="visible" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } } }}>
-            {meetings.map((meeting) => (
+            {filteredMeetings.map((meeting) => (
               <motion.div key={meeting.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
                 <Card sx={{ mb: 2, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "white" }}>
                   <CardContent>
@@ -92,7 +102,7 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
             ))}
           </motion.div>
         ) : (
-          <Typography textAlign="center" color="gray">אין פגישות זמינות כרגע.</Typography>
+          <Typography textAlign="center" color="gray">לא נמצאו פגישות בשם זה.</Typography>
         )}
       </motion.div>
 
