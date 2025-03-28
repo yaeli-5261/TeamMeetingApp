@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeetSummarizerAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85da056796c9ab9fb4582bffb952514af45ead4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af41ad002c71684190a7192f093faa6d6664c040")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeetSummarizerAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeetSummarizerAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

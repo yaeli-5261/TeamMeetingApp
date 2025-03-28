@@ -101,6 +101,7 @@ namespace MeetSummarizer.API.Controllers
 
             return Ok(new { message = "Meeting deleted" });
         }
+
     }
 }
 

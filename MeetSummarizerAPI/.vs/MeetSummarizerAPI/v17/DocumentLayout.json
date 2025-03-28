@@ -107,8 +107,7 @@
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-25T10:55:53.956Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -120,8 +119,7 @@
               "RelativeToolTip": "MeetSummarizer.Service\\UserService.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:00:34.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T14:00:34.478Z"
             },
             {
               "$type": "Document",
@@ -133,8 +131,7 @@
               "RelativeToolTip": "MeetSummarizer.Core\\IServices\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:00:12.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T14:00:12.638Z"
             },
             {
               "$type": "Document",
@@ -146,8 +143,7 @@
               "RelativeToolTip": "MeetSummarizer.Core\\Entities\\LoginModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T13:59:35.408Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T13:59:35.408Z"
             },
             {
               "$type": "Document",
@@ -157,7 +153,7 @@
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\MeetingController.cs",
               "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\MeetingController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\MeetingController.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAmwGoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAFoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T19:24:01.477Z",
               "EditorCaption": ""
@@ -172,8 +168,7 @@
               "RelativeToolTip": "MeetSummarizer.Service\\S3Service.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAQwF8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T21:04:32.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T21:04:32.551Z"
             },
             {
               "$type": "Document",
@@ -185,8 +180,7 @@
               "RelativeToolTip": "MeetSummarizerAPI\\Program.cs",
               "ViewState": "AgIAAHoAAAAAAAAAAAAAAI0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T20:16:05.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T20:16:05.013Z"
             },
             {
               "$type": "Document",
@@ -198,8 +192,7 @@
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\UploadController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T21:14:11.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T21:14:11.729Z"
             },
             {
               "$type": "Document",
@@ -211,8 +204,7 @@
               "RelativeToolTip": "MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwA0AAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:00:50.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T14:00:50.094Z"
             },
             {
               "$type": "Document",
@@ -224,8 +216,7 @@
               "RelativeToolTip": "MeetSummarizer.Data\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:01:01.933Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T14:01:01.933Z"
             },
             {
               "$type": "Document",
@@ -261,8 +252,7 @@
               "RelativeToolTip": "MeetSummarizer.Service\\AuthService.cs",
               "ViewState": "AgIAAA8AAABgMzMzM7MmwBwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T19:20:01.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T19:20:01.484Z"
             },
             {
               "$type": "Document",
@@ -274,8 +264,7 @@
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAQwDkAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T19:23:27.795Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T19:23:27.795Z"
             },
             {
               "$type": "Document",
