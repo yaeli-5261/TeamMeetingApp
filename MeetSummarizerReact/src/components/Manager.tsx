@@ -10,8 +10,6 @@ export default () => {
         <Provider store={store} >
                 <RouterProvider router={router}></RouterProvider>
         </Provider>
-
     </>)
-
 }
 
