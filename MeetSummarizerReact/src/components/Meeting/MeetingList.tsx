@@ -130,19 +130,27 @@ import {
   Chip,
   Grid,
   IconButton,
-  Skeleton
+  Skeleton,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  useTheme,
+  useMediaQuery
 } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SortIcon from '@mui/icons-material/Sort';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import UpdateMeetingDialog from "./UpdateMeetingDialog";
 import { MeetingDTO } from "../../models/meetingTypes";
 import { fetchMeetingsByTeam } from "../../store/meetingSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import MeetingSearch from "./MeetingSearch ";
-// import MeetingSearch from "./MeetingSearch";
 
 interface MeetingListProps {
   meetings?: MeetingDTO[];
@@ -153,8 +161,17 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
   const [loading, setLoading] = useState(!meetingsFromProps);
   const [selectedMeeting, setSelectedMeeting] = useState<MeetingDTO | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [activeMeetingId, setActiveMeetingId] = useState<number | null>(null);
+  const [sortMenuAnchorEl, setSortMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [filterMenuAnchorEl, setFilterMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const [sortBy, setSortBy] = useState<'date' | 'name'>('date');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
+  
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.Auth.user);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
     if (!meetingsFromProps) {
@@ -187,6 +204,19 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
     meeting.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // מיון פגישות
+  const sortedMeetings = [...filteredMeetings].sort((a, b) => {
+    if (sortBy === 'date') {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+    } else {
+      return sortDirection === 'asc' 
+        ? a.name.localeCompare(b.name) 
+        : b.name.localeCompare(a.name);
+    }
+  });
+
   // פונקציה לפורמט תאריך
   const formatDate = (dateString: string) => {
     try {
@@ -203,8 +233,59 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
     }
   };
 
+  // פונקציות לתפריטים
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, meetingId: number) => {
+    setMenuAnchorEl(event.currentTarget);
+    setActiveMeetingId(meetingId);
+  };
+
+  const handleMenuClose = () => {
+    setMenuAnchorEl(null);
+    setActiveMeetingId(null);
+  };
+
+  const handleSortMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setSortMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleSortMenuClose = () => {
+    setSortMenuAnchorEl(null);
+  };
+
+  const handleFilterMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setFilterMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleFilterMenuClose = () => {
+    setFilterMenuAnchorEl(null);
+  };
+
+  const handleSort = (field: 'date' | 'name') => {
+    if (sortBy === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(field);
+      setSortDirection('desc');
+    }
+    handleSortMenuClose();
+  };
+
+  const handleEditMeeting = (meeting: MeetingDTO) => {
+    setSelectedMeeting(meeting);
+    handleMenuClose();
+  };
+
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
+    <Box 
+      sx={{ 
+        width: '100%',
+        ml: { xs: 0, md: '250px' }, // מרווח שמאלי בגודל התפריט במסכים גדולים
+        transition: 'margin 0.3s',
+        boxSizing: 'border-box',
+        p: { xs: 2, md: 3 },
+        maxWidth: { xs: '100%', md: 'calc(100% - 250px)' }
+      }}
+    >
       <Paper 
         elevation={0} 
         sx={{ 
@@ -213,30 +294,129 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
           border: '1px solid',
           borderColor: 'divider',
           bgcolor: 'background.paper',
-          mb: 4
+          mb: 4,
+          overflow: 'hidden'
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between', 
+          alignItems: { xs: 'flex-start', sm: 'center' }, 
+          mb: 3,
+          gap: 2
+        }}>
           <Typography variant="h5" fontWeight={600} color="text.primary">
             פגישות
           </Typography>
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={() => navigate("/add-meeting")}
-            sx={{ 
-              bgcolor: '#1a1a1a',
-              color: 'white',
-              textTransform: 'none',
-              fontWeight: 500,
-              '&:hover': {
-                bgcolor: '#2c2c2c'
-              }
-            }}
-          >
-            פגישה חדשה
-          </Button>
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<FilterListIcon />}
+              onClick={handleFilterMenuOpen}
+              sx={{ 
+                borderColor: 'divider',
+                color: 'text.secondary',
+                textTransform: 'none'
+              }}
+            >
+              סינון
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<SortIcon />}
+              onClick={handleSortMenuOpen}
+              sx={{ 
+                borderColor: 'divider',
+                color: 'text.secondary',
+                textTransform: 'none'
+              }}
+            >
+              מיון
+            </Button>
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={() => navigate("/add-meeting")}
+              sx={{ 
+                bgcolor: '#1a1a1a',
+                color: 'white',
+                textTransform: 'none',
+                fontWeight: 500,
+                '&:hover': {
+                  bgcolor: '#2c2c2c'
+                }
+              }}
+            >
+              פגישה חדשה
+            </Button>
+          </Box>
         </Box>
+
+        {/* תפריט מיון */}
+        <Menu
+          anchorEl={sortMenuAnchorEl}
+          open={Boolean(sortMenuAnchorEl)}
+          onClose={handleSortMenuClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem 
+            onClick={() => handleSort('date')}
+            selected={sortBy === 'date'}
+          >
+            <ListItemIcon>
+              <CalendarTodayIcon fontSize="small" />
+            </ListItemIcon>
+            <Typography variant="body2">
+              לפי תאריך {sortBy === 'date' && (sortDirection === 'asc' ? '(מהישן לחדש)' : '(מהחדש לישן)')}
+            </Typography>
+          </MenuItem>
+          <MenuItem 
+            onClick={() => handleSort('name')}
+            selected={sortBy === 'name'}
+          >
+            <ListItemIcon>
+              <SortIcon fontSize="small" />
+            </ListItemIcon>
+            <Typography variant="body2">
+              לפי שם {sortBy === 'name' && (sortDirection === 'asc' ? '(א-ת)' : '(ת-א)')}
+            </Typography>
+          </MenuItem>
+        </Menu>
+
+        {/* תפריט סינון */}
+        <Menu
+          anchorEl={filterMenuAnchorEl}
+          open={Boolean(filterMenuAnchorEl)}
+          onClose={handleFilterMenuClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem onClick={handleFilterMenuClose}>
+            <Typography variant="body2">כל הפגישות</Typography>
+          </MenuItem>
+          <MenuItem onClick={handleFilterMenuClose}>
+            <Typography variant="body2">פגישות עם תמלול</Typography>
+          </MenuItem>
+          <MenuItem onClick={handleFilterMenuClose}>
+            <Typography variant="body2">פגישות ללא תמלול</Typography>
+          </MenuItem>
+        </Menu>
 
         {/* מנוע החיפוש */}
         <Box sx={{ mb: 3 }}>
@@ -269,13 +449,13 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
               </Box>
             </Paper>
           ))
-        ) : filteredMeetings.length > 0 ? (
+        ) : sortedMeetings.length > 0 ? (
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 0.4 }}
           >
-            {filteredMeetings.map((meeting) => (
+            {sortedMeetings.map((meeting) => (
               <motion.div
                 key={meeting.id}
                 initial={{ y: 20, opacity: 0 }}
@@ -315,7 +495,11 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
                           {meeting.name}
                         </Typography>
                       </Box>
-                      <IconButton size="small">
+                      <IconButton 
+                        size="small"
+                        onClick={(e) => handleMenuOpen(e, meeting.id)}
+                        aria-label="אפשרויות נוספות"
+                      >
                         <MoreVertIcon fontSize="small" />
                       </IconButton>
                     </Box>
@@ -386,6 +570,39 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
         )}
       </Paper>
 
+      {/* תפריט אפשרויות לפגישה */}
+      <Menu
+        anchorEl={menuAnchorEl}
+        open={Boolean(menuAnchorEl)}
+        onClose={handleMenuClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <MenuItem 
+          onClick={() => {
+            const meeting = meetings.find(m => m.id === activeMeetingId);
+            if (meeting) handleEditMeeting(meeting);
+          }}
+        >
+          <ListItemIcon>
+            <EditIcon fontSize="small" />
+          </ListItemIcon>
+          <Typography variant="body2">ערוך פגישה</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+          <ListItemIcon>
+            <DeleteIcon fontSize="small" color="error" />
+          </ListItemIcon>
+          <Typography variant="body2" color="error.main">מחק פגישה</Typography>
+        </MenuItem>
+      </Menu>
+
       {selectedMeeting && (
         <UpdateMeetingDialog 
           open={Boolean(selectedMeeting)} 
@@ -394,6 +611,6 @@ export default function MeetingList({ meetings: meetingsFromProps }: MeetingList
           onUpdate={handleUpdate} 
         />
       )}
-    </Container>
+    </Box>
   );
 }
