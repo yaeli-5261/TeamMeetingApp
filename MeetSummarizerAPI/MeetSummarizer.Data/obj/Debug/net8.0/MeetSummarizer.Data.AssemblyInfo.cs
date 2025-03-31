@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeetSummarizer.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af41ad002c71684190a7192f093faa6d6664c040")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeetSummarizer.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeetSummarizer.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

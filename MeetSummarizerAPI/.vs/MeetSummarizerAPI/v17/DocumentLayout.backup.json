@@ -1,77 +1,77 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\meetingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.core\\irepository\\imeetingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\irepository\\imeetingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.core\\irepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\irepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D2E7714C-2097-4135-88E6-A1E2FBEA503F}|MeetSummarizer.Data\\MeetSummarizer.Data.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2E7714C-2097-4135-88E6-A1E2FBEA503F}|MeetSummarizer.Data\\MeetSummarizer.Data.csproj|solutionrelative:meetsummarizer.data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.core\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.core\\entities\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\entities\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\meetingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\meetingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\meetingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\teamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.core\\irepository\\imeetingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\irepository\\imeetingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.core\\irepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\irepository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2E7714C-2097-4135-88E6-A1E2FBEA503F}|MeetSummarizer.Data\\MeetSummarizer.Data.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2E7714C-2097-4135-88E6-A1E2FBEA503F}|MeetSummarizer.Data\\MeetSummarizer.Data.csproj|solutionrelative:meetsummarizer.data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.core\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.core\\entities\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F32071F-7545-4FD9-AC09-D671363A5F6D}|MeetSummarizer.Core\\MeetSummarizer.Core.csproj|solutionrelative:meetsummarizer.core\\entities\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\teamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\teamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizer.service\\meetsummarizer.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizer.service\\meetsummarizer.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{1F0F1FDC-2768-4A93-BDF1-B0F6B81AE490}|MeetSummarizer.Service\\MeetSummarizer.Service.csproj|solutionrelative:meetsummarizer.service\\meetsummarizer.service.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\documents\\myprojects\\mypracticum\\meetsummarizerapi\\meetsummarizerapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|c:\\users\\user1\\pictures\\teammeetingapp-main\\meetsummarizerapi\\meetsummarizerapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C63357A5-C74F-402A-92D2-5C7ADDA82873}|MeetSummarizerAPI\\MeetSummarizerAPI.csproj|solutionrelative:meetsummarizerapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -82,15 +82,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IMeetingRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
               "RelativeToolTip": "MeetSummarizer.Core\\IRepository\\IMeetingRepository.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -111,23 +111,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\UserService.cs",
-              "RelativeDocumentMoniker": "MeetSummarizer.Service\\UserService.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\UserService.cs",
-              "RelativeToolTip": "MeetSummarizer.Service\\UserService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T14:00:34.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IServices\\IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IServices\\IUserService.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Core\\IServices\\IUserService.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IServices\\IUserService.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IServices\\IUserService.cs",
               "RelativeToolTip": "MeetSummarizer.Core\\IServices\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -135,11 +123,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "LoginModel.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\Entities\\LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\Entities\\LoginModel.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Core\\Entities\\LoginModel.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\Entities\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\Entities\\LoginModel.cs",
               "RelativeToolTip": "MeetSummarizer.Core\\Entities\\LoginModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -149,22 +137,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MeetingController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\MeetingController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\MeetingController.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\MeetingController.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\MeetingController.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\MeetingController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\MeetingController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAqwFoAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBEAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T19:24:01.477Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "S3Service.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\S3Service.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\S3Service.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Service\\S3Service.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\S3Service.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\S3Service.cs",
               "RelativeToolTip": "MeetSummarizer.Service\\S3Service.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAQwF8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -172,11 +160,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Program.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Program.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Program.cs",
               "ViewState": "AgIAAHoAAAAAAAAAAAAAAI0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -184,11 +172,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UploadController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UploadController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UploadController.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\UploadController.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UploadController.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UploadController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\UploadController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -196,11 +184,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "MeetingService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetingService.cs",
+              "RelativeDocumentMoniker": "MeetSummarizer.Service\\MeetingService.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetingService.cs",
+              "RelativeToolTip": "MeetSummarizer.Service\\MeetingService.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAiwEAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T22:30:05.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\UserService.cs",
+              "RelativeDocumentMoniker": "MeetSummarizer.Service\\UserService.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\UserService.cs",
+              "RelativeToolTip": "MeetSummarizer.Service\\UserService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCEAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:00:34.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
               "RelativeToolTip": "MeetSummarizer.Core\\IRepository\\IUserRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwA0AAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -208,11 +220,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Data\\Repositories\\UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Data\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Data\\Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Data\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Data\\Repositories\\UserRepository.cs",
               "RelativeToolTip": "MeetSummarizer.Data\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -222,9 +234,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "RoleController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\RoleController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\RoleController.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\RoleController.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\RoleController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\RoleController.cs",
               "ViewState": "AgIAAA8AAAAgMzMzM7MmwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -234,9 +246,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "TeamService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\TeamService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\TeamService.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Service\\TeamService.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\TeamService.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\TeamService.cs",
               "RelativeToolTip": "MeetSummarizer.Service\\TeamService.cs",
               "ViewState": "AgIAAAoAAABAmpmZmRkmwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -244,11 +256,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\AuthService.cs",
               "RelativeDocumentMoniker": "MeetSummarizer.Service\\AuthService.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\AuthService.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\AuthService.cs",
               "RelativeToolTip": "MeetSummarizer.Service\\AuthService.cs",
               "ViewState": "AgIAAA8AAABgMzMzM7MmwBwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -256,11 +268,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAQwDkAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -270,9 +282,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "MeetSummarizer.Service.csproj",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
               "RelativeDocumentMoniker": "MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
               "RelativeToolTip": "MeetSummarizer.Service\\MeetSummarizer.Service.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -280,23 +292,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MeetingService.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetingService.cs",
-              "RelativeDocumentMoniker": "MeetSummarizer.Service\\MeetingService.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Service\\MeetingService.cs",
-              "RelativeToolTip": "MeetSummarizer.Service\\MeetingService.cs",
-              "ViewState": "AgIAABkAAAAANDMzMzMawCYAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T22:30:05.398Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 16,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\appsettings.json",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\appsettings.json",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\appsettings.json",
               "RelativeToolTip": "MeetSummarizerAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -306,9 +306,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UserController.cs",
+              "DocumentMoniker": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MeetSummarizerAPI\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\Controllers\\UserController.cs",
               "RelativeToolTip": "MeetSummarizerAPI\\Controllers\\UserController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

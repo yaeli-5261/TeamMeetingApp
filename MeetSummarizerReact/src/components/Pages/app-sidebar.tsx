@@ -1,412 +1,613 @@
-// // import { Button } from "@/components/ui/button"
-// import Button from "@mui/material/Button";
-// import { Calendar, FileText, FolderOpen, Home, MessageSquare, PlusCircle, Settings, Users } from "lucide-react"
-// import { Link } from "react-router-dom";
-// // import Link from "next/link";
-// export function AppSidebar() {
-//   return (
-//     <div className="flex h-screen w-64 flex-col border-r bg-background">
-//       <div className="flex h-14 items-center border-b px-4">
-//         <Link to="/" className="flex items-center gap-2 font-semibold">
-//           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-teal-400">
-//             <FileText className="h-4 w-4 text-white" />
-//           </div>
-//           <span>MeetingFiles</span>
-//         </Link>
-//       </div>
-//       <div className="flex-1 overflow-auto p-3">
-//         <div className="space-y-1">
-//           <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-//             <Link to ="/">
-//               <Home className="h-4 w-4" />
-//               Dashboard
-//             </Link>
-//           </Button>
-//           <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-//             <Link to ="/meetings">
-//               <MessageSquare className="h-4 w-4" />
-//               Meetings
-//             </Link>
-//           </Button>
-//           <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-//             <Link to ="/calendar">
-//               <Calendar className="h-4 w-4" />
-//               Calendar
-//             </Link>
-//           </Button>
-//           <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-//             <Link to ="/files">
-//               <FolderOpen className="h-4 w-4" />
-//               Files
-//             </Link>
-//           </Button>
-//           <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-//             <Link to ="/team">
-//               <Users className="h-4 w-4" />
-//               Team
-//             </Link>
-//           </Button>
-//         </div>
+"use client"
 
-//         <div className="mt-6">
-//           <div className="text-xs font-medium text-muted-foreground mb-2 px-3">Recent Files</div>
-//           <div className="space-y-1">
-//             <Button variant="ghost" size="sm" className="w-full justify-start text-xs font-normal">
-//               Q1 Strategy Meeting.pdf
-//             </Button>
-//             <Button variant="ghost" size="sm" className="w-full justify-start text-xs font-normal">
-//               Product Roadmap 2025.docx
-//             </Button>
-//             <Button variant="ghost" size="sm" className="w-full justify-start text-xs font-normal">
-//               Team Feedback Notes.md
-//             </Button>
-//           </div>
-//         </div>
-//       </div>
+import type React from "react"
+import { useState, useEffect } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+  Button,
+  useMediaQuery,
+  useTheme,
+  Avatar,
+  Menu,
+  MenuItem,
+  IconButton,
+  Divider,
+  Tooltip,
+  CircularProgress,
+} from "@mui/material"
+import {
+  Home as HomeIcon,
+  Message as MessageIcon,
+  Settings as SettingsIcon,
+  Add as AddIcon,
+  Login as LoginIcon,
+  Logout as LogoutIcon,
+  Person as PersonIcon,
+  Description as DescriptionIcon,
+  Menu as MenuIcon,
+  InsertDriveFile as FileIcon,
+  PictureAsPdf as PdfIcon,
+  Article as DocIcon,
+  Image as ImageIcon,
+  TextSnippet as TextIcon,
+} from "@mui/icons-material"
+import { useSelector, useDispatch } from "react-redux"
+import type { RootState, AppDispatch } from "../../store/store"
+import { logout } from "../../store/authSlice"
+import { fetchMeetingsByTeam } from "../../store/meetingSlice"
+import { getCookie } from "../../services/meetingService"
 
-//       <div className="border-t p-3">
-//         <Button className="w-full gap-2" size="sm">
-//           <PlusCircle className="h-4 w-4" />
-//           New Meeting
-//         </Button>
-//         <Button variant="ghost" className="mt-2 w-full justify-start gap-3" asChild>
-//           <Link href="/settings">
-//             <Settings className="h-4 w-4" />
-//             Settings
-//           </Link>
-//         </Button>
-//       </div>
-//     </div>
-//   )
-// }
+// Define the navigation items
+const navItems = [
+  { name: "דף הבית", path: "/", icon: <HomeIcon /> },
+  { name: "פגישות", path: "/meetings", icon: <MessageIcon /> },
+  // { name: "יומן", path: "/calendar", icon: <CalendarIcon /> },
+  // { name: "קבצים", path: "/files", icon: <FolderIcon /> },
+  // { name: "צוות", path: "/team", icon: <TeamIcon /> },
+]
 
-import { Button, Box, Typography, List, ListItem, ListItemIcon, ListItemText, Divider } from "@mui/material";
-import { Link } from "react-router-dom";
-import HomeIcon from '@mui/icons-material/Home';
-import ChatIcon from '@mui/icons-material/Chat';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import FolderIcon from '@mui/icons-material/Folder';
-import PeopleIcon from '@mui/icons-material/People';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DescriptionIcon from '@mui/icons-material/Description';
+// Interface for recent file
+interface RecentFile {
+  name: string
+  path: string
+  meetingId: number
+  fileType: string
+  date: Date
+}
 
 export function AppSidebar() {
-  return (
-    <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      width: 250, 
-      height: '100vh',
-      borderRight: '1px solid',
-      borderColor: 'divider',
-      bgcolor: 'background.paper'
-    }}>
-      {/* Header */}
-      <Box sx={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        height: 56, 
-        px: 2,
-        borderBottom: '1px solid',
-        borderColor: 'divider'
-      }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: 'inherit' }}>
-          <Box sx={{ 
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 32,
-            height: 32,
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #3b82f6, #14b8a6)'
-          }}>
-            <DescriptionIcon sx={{ color: 'white', fontSize: 16 }} />
+  const navigate = useNavigate()
+  const location = useLocation()
+  const theme = useTheme()
+  const dispatch = useDispatch<AppDispatch>()
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const { user, loading: authLoading } = useSelector((state: RootState) => state.Auth)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [recentFiles, setRecentFiles] = useState<RecentFile[]>([])
+  const [loadingFiles, setLoadingFiles] = useState(false)
+
+  // Get meetings from Redux store
+  const meetings = useSelector((state: RootState) => state.meetings.list)
+
+  // בדיקה אם המשתמש מחובר בעת טעינת הקומפוננטה
+  useEffect(() => {
+    const userData = sessionStorage.getItem("user")
+    const token = getCookie("auth_token")
+    setIsLoggedIn(!!(userData && token && user && user.userName))
+  }, [user])
+
+  // Fetch meetings and extract recent files
+  useEffect(() => {
+    if (isLoggedIn && user?.teamId) {
+      setLoadingFiles(true)
+
+      // Fetch meetings if not already loaded
+      if (meetings.length === 0) {
+        dispatch(fetchMeetingsByTeam({ teamId: user.teamId }))
+          .unwrap()
+          .then((fetchedMeetings) => {
+            extractRecentFiles(fetchedMeetings)
+          })
+          .catch((error) => {
+            console.error("Error fetching meetings:", error)
+          })
+          .finally(() => {
+            setLoadingFiles(false)
+          })
+      } else {
+        // Use already loaded meetings
+        extractRecentFiles(meetings)
+        setLoadingFiles(false)
+      }
+    }
+  }, [isLoggedIn, user, meetings.length, dispatch])
+
+  // Extract recent files from meetings
+  const extractRecentFiles = (meetingsData: any[]) => {
+    const files: RecentFile[] = []
+
+    meetingsData.forEach((meeting) => {
+      // Check for original file
+      if (meeting.linkOrinignFile) {
+        const fileName = meeting.linkOrinignFile.split("/").pop() || "קובץ"
+        const fileType = getFileType(fileName)
+
+        files.push({
+          name: fileName,
+          path: `/meeting-details/${meeting.id}`,
+          meetingId: meeting.id,
+          fileType: fileType,
+          date: new Date(meeting.date),
+        })
+      }
+
+      // Check for transcript file
+      if (meeting.linkTranscriptFile) {
+        const fileName = meeting.linkTranscriptFile.split("/").pop() || "תמלול"
+        const fileType = getFileType(fileName)
+
+        files.push({
+          name: `תמלול - ${fileName}`,
+          path: `/meeting-details/${meeting.id}`,
+          meetingId: meeting.id,
+          fileType: fileType,
+          date: new Date(meeting.date),
+        })
+      }
+    })
+
+    // Sort by date (newest first) and take the first 5
+    const sortedFiles = files.sort((a, b) => b.date.getTime() - a.date.getTime()).slice(0, 5)
+    setRecentFiles(sortedFiles)
+  }
+
+  // Get file type icon based on extension
+  const getFileType = (fileName: string): string => {
+    const extension = fileName.split(".").pop()?.toLowerCase() || ""
+
+    if (["pdf"].includes(extension)) return "pdf"
+    if (["doc", "docx"].includes(extension)) return "doc"
+    if (["jpg", "jpeg", "png", "gif"].includes(extension)) return "image"
+    if (["txt", "md"].includes(extension)) return "text"
+
+    return "file"
+  }
+
+  // Get file icon based on file type
+  const getFileIcon = (fileType: string) => {
+    switch (fileType) {
+      case "pdf":
+        return <PdfIcon fontSize="small" sx={{ color: "#f44336" }} />
+      case "doc":
+        return <DocIcon fontSize="small" sx={{ color: "#2196f3" }} />
+      case "image":
+        return <ImageIcon fontSize="small" sx={{ color: "#4caf50" }} />
+      case "text":
+        return <TextIcon fontSize="small" sx={{ color: "#ff9800" }} />
+      default:
+        return <FileIcon fontSize="small" sx={{ color: "#757575" }} />
+    }
+  }
+
+  // עבור תפריט המשתמש
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+
+  const handleUserClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
+  const handleNavigation = (path: string) => {
+    navigate(path)
+    if (isMobile) {
+      setMobileOpen(false)
+    }
+  }
+
+  // עדכון פונקציית ה-handleLogout כדי לוודא שהמשתמש מתנתק לחלוטין
+  const handleLogout = () => {
+    // הפעלת פעולת ההתנתקות ב-Redux
+    dispatch(logout())
+
+    // מחיקת ה-token מה-cookies
+    document.cookie = "auth_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+    // מחיקת נתוני המשתמש מה-sessionStorage
+    sessionStorage.removeItem("user")
+
+    // סגירת התפריט
+    handleClose()
+
+    // עדכון מצב ההתחברות
+    setIsLoggedIn(false)
+
+    // ניווט לדף הבית
+    navigate("/")
+  }
+
+  const handleLogin = () => {
+    navigate("/login")
+    if (isMobile) {
+      setMobileOpen(false)
+    }
+  }
+
+  const isActive = (path: string) => {
+    return location.pathname === path || location.pathname.startsWith(path + "/")
+  }
+
+  // Mobile menu button
+  const mobileMenuButton = (
+    <IconButton
+      color="inherit"
+      aria-label="open drawer"
+      edge="start"
+      onClick={handleDrawerToggle}
+      sx={{
+        display: { xs: "block", md: "none" },
+        position: "fixed",
+        top: 10,
+        right: 10,
+        zIndex: 1200,
+        bgcolor: "background.paper",
+        boxShadow: 2,
+      }}
+    >
+      <MenuIcon />
+    </IconButton>
+  )
+
+  const drawerContent = (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: 250,
+        bgcolor: "background.paper",
+      }}
+    >
+      {/* App Logo/Title */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          p: 2,
+          borderBottom: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 36,
+            height: 36,
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #10a37f, #0e8a6c)",
+            mr: 1.5,
+          }}
+        >
+          <DescriptionIcon sx={{ color: "white", fontSize: 20 }} />
+        </Box>
+        <Typography variant="h6" component="div" sx={{ fontWeight: 600 }}>
+          MeetingFiles
+        </Typography>
+      </Box>
+
+      {/* User Profile / Login Section */}
+      <Box
+        sx={{
+          p: 2,
+          borderBottom: "1px solid",
+          borderColor: "divider",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {isLoggedIn ? (
+          <>
+            <Box
+              onClick={handleUserClick}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1.5,
+                cursor: "pointer",
+                width: "100%",
+                p: 1,
+                borderRadius: 1,
+                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" },
+              }}
+            >
+              <Avatar
+                sx={{
+                  width: 32,
+                  height: 32,
+                  bgcolor: "#10a37f",
+                }}
+              >
+                {user?.userName ? user.userName.charAt(0).toUpperCase() : <PersonIcon />}
+              </Avatar>
+              <Box sx={{ overflow: "hidden" }}>
+                <Typography variant="body2" fontWeight={500} noWrap>
+                  {user?.userName || "משתמש"}
+                </Typography>
+                <Typography variant="caption" color="text.secondary" noWrap>
+                  {user?.email || "מחובר"}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+            >
+              <MenuItem onClick={handleLogout}>
+                <ListItemIcon>
+                  <LogoutIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>התנתקות</ListItemText>
+              </MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <Box sx={{ width: "100%" }}>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+              משתמש לא מחובר
+            </Typography>
+            <Button
+              onClick={() => navigate("/login")}
+              variant="outlined"
+              startIcon={<LoginIcon />}
+              fullWidth
+              sx={{
+                justifyContent: "flex-start",
+                textTransform: "none",
+                borderColor: "#10a37f",
+                color: "#10a37f",
+                "&:hover": {
+                  borderColor: "#0e8a6c",
+                  bgcolor: "rgba(16, 163, 127, 0.04)",
+                },
+              }}
+            >
+              SIGN IN
+            </Button>
           </Box>
-          <Typography variant="subtitle1" fontWeight={600}>
-            MeetingFiles
-          </Typography>
-        </Link>
+        )}
       </Box>
 
       {/* Main Navigation */}
-      <Box sx={{ p: 1.5, overflowY: 'auto', flexGrow: 1 }}>
-
-        <List disablePadding>
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
+      <List sx={{ flexGrow: 0, pt: 1 }}>
+        {navItems.map((item) => (
+          <ListItem key={item.name} disablePadding>
+            <ListItemButton
+              onClick={() => handleNavigation(item.path)}
+              selected={isActive(item.path)}
+              sx={{
                 borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
+                mx: 1,
+                "&.Mui-selected": {
+                  bgcolor: "rgba(16, 163, 127, 0.08)",
+                  color: "#10a37f",
+                  "&:hover": {
+                    bgcolor: "rgba(16, 163, 127, 0.12)",
+                  },
+                  "& .MuiListItemIcon-root": {
+                    color: "#10a37f",
+                  },
+                },
+                "&:hover": {
+                  bgcolor: "rgba(0, 0, 0, 0.04)",
+                },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <HomeIcon fontSize="small" />
+              <ListItemIcon sx={{ minWidth: 40, color: isActive(item.path) ? "#10a37f" : "inherit" }}>
+                {item.icon}
               </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </Button>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
           </ListItem>
+        ))}
+      </List>
 
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/meetings"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <ChatIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Meetings" />
-            </Button>
-          </ListItem>
+      {/* Recent Files Section */}
+      <Box sx={{ flexGrow: 1, overflow: "auto", px: 2, py: 1 }}>
+        <Typography
+          variant="caption"
+          color="text.secondary"
+          sx={{
+            display: "block",
+            fontWeight: 500,
+            px: 1,
+            mb: 1,
+          }}
+        >
+          קבצים אחרונים
+        </Typography>
 
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <HomeIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </Button>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/signIn"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <ChatIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Sign In" />
-            </Button>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <CalendarMonthIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Calendar" />
-            </Button>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <FolderIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Files" />
-            </Button>
-          </ListItem>
-
-          <ListItem disablePadding>
-            <Button
-              component={Link}
-              to="/"
-              variant="text"
-              fullWidth
-              sx={{ 
-                justifyContent: 'flex-start', 
-                textAlign: 'left',
-                py: 1,
-                px: 2,
-                borderRadius: 1,
-                mb: 0.5,
-                color: 'text.primary'
-              }}
-            >
-              <ListItemIcon sx={{ minWidth: 36 }}>
-                <PeopleIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Team" />
-            </Button>
-          </ListItem>
-        </List>
-
-        {/* Recent Files */}
-        <Box sx={{ mt: 3 }}>
-          <Typography 
-            variant="caption" 
-            color="text.secondary" 
-            sx={{ px: 2, fontWeight: 500 }}
-          >
-            Recent Files
-          </Typography>
-          
-          <List dense disablePadding sx={{ mt: 0.5 }}>
-            <ListItem disablePadding>
-              <Button
-                variant="text"
-                fullWidth
-                sx={{ 
-                  justifyContent: 'flex-start', 
-                  textAlign: 'left',
-                  py: 0.5,
-                  px: 2,
-                  borderRadius: 1,
-                  mb: 0.5,
-                  fontSize: '0.75rem',
-                  color: 'text.primary'
-                }}
-              >
-                Q1 Strategy Meeting.pdf
-              </Button>
-            </ListItem>
-            
-            <ListItem disablePadding>
-              <Button
-                variant="text"
-                fullWidth
-                sx={{ 
-                  justifyContent: 'flex-start', 
-                  textAlign: 'left',
-                  py: 0.5,
-                  px: 2,
-                  borderRadius: 1,
-                  mb: 0.5,
-                  fontSize: '0.75rem',
-                  color: 'text.primary'
-                }}
-              >
-                Product Roadmap 2025.docx
-              </Button>
-            </ListItem>
-            
-            <ListItem disablePadding>
-              <Button
-                variant="text"
-                fullWidth
-                sx={{ 
-                  justifyContent: 'flex-start', 
-                  textAlign: 'left',
-                  py: 0.5,
-                  px: 2,
-                  borderRadius: 1,
-                  mb: 0.5,
-                  fontSize: '0.75rem',
-                  color: 'text.primary'
-                }}
-              >
-                Team Feedback Notes.md
-              </Button>
-            </ListItem>
+        {loadingFiles ? (
+          <Box sx={{ display: "flex", justifyContent: "center", py: 2 }}>
+            <CircularProgress size={24} sx={{ color: "#10a37f" }} />
+          </Box>
+        ) : recentFiles.length > 0 ? (
+          <List dense disablePadding>
+            {recentFiles.map((file, index) => (
+              <ListItem key={`${file.meetingId}-${index}`} disablePadding>
+                <Tooltip title={`פגישה: ${meetings.find((m) => m.id === file.meetingId)?.name || ""}`} placement="left">
+                  <ListItemButton
+                    onClick={() => handleNavigation(file.path)}
+                    sx={{
+                      borderRadius: 1,
+                      py: 0.5,
+                      px: 1,
+                    }}
+                  >
+                    <ListItemIcon sx={{ minWidth: 30 }}>{getFileIcon(file.fileType)}</ListItemIcon>
+                    <ListItemText
+                      primary={file.name}
+                      primaryTypographyProps={{
+                        variant: "body2",
+                        noWrap: true,
+                      }}
+                    />
+                  </ListItemButton>
+                </Tooltip>
+              </ListItem>
+            ))}
           </List>
-        </Box>
+        ) : isLoggedIn ? (
+          <Box sx={{ textAlign: "center", py: 2, px: 1 }}>
+            <Typography variant="body2" color="text.secondary">
+              אין קבצים אחרונים להצגה
+            </Typography>
+          </Box>
+        ) : (
+          <Box sx={{ textAlign: "center", py: 2, px: 1 }}>
+            <Typography variant="body2" color="text.secondary">
+              התחבר כדי לראות קבצים אחרונים
+            </Typography>
+          </Box>
+        )}
       </Box>
 
-      {/* Footer */}
-      <Box sx={{ p: 1.5, borderTop: '1px solid', borderColor: 'divider' }}>
-        <Button
-          component={Link}
-          to="/add-meeting"
-          variant="contained"
-          fullWidth
-          startIcon={<AddCircleIcon />}
-          sx={{ 
-            bgcolor: '#1a1a1a',
-            color: 'white',
-            textTransform: 'none',
-            '&:hover': {
-              bgcolor: '#2c2c2c'
-            }
-          }}
-        >
-          New Meeting
-        </Button>
-        
-        <Button
-          component={Link}
-          to="/"
-          variant="text"
-          fullWidth
-          sx={{ 
-            justifyContent: 'flex-start', 
-            textAlign: 'left',
-            py: 1,
-            px: 2,
-            mt: 1,
-            borderRadius: 1,
-            color: 'text.primary'
-          }}
-        >
-          <ListItemIcon sx={{ minWidth: 36 }}>
-            <SettingsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Settings" />
-        </Button>
+      {/* Bottom Actions */}
+      <Box sx={{ p: 2, borderTop: "1px solid", borderColor: "divider" }}>
+        {isLoggedIn ? (
+          <>
+            <Button
+              variant="contained"
+              fullWidth
+              startIcon={<AddIcon />}
+              onClick={() => handleNavigation("/add-meeting")}
+              sx={{
+                bgcolor: "#10a37f",
+                color: "white",
+                textTransform: "none",
+                fontWeight: 500,
+                mb: 1,
+                "&:hover": {
+                  bgcolor: "#0e8a6c",
+                },
+              }}
+            >
+              פגישה חדשה
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              startIcon={<LogoutIcon />}
+              onClick={handleLogout}
+              sx={{
+                borderColor: "#ff5252",
+                color: "#ff5252",
+                textTransform: "none",
+                fontWeight: 500,
+                mt: 1,
+                "&:hover": {
+                  bgcolor: "rgba(255, 82, 82, 0.04)",
+                  borderColor: "#ff3333",
+                },
+              }}
+            >
+              התנתקות
+            </Button>
+          </>
+        ) : (
+          <Button
+            variant="contained"
+            fullWidth
+            startIcon={<LoginIcon />}
+            onClick={() => navigate("/login")}
+            sx={{
+              bgcolor: "#10a37f",
+              color: "white",
+              textTransform: "none",
+              fontWeight: 500,
+              "&:hover": {
+                bgcolor: "#0e8a6c",
+              },
+            }}
+          >
+            SIGN IN
+          </Button>
+        )}
+
+        <Divider sx={{ my: 2 }} />
+
+        <ListItem disablePadding>
+          <ListItemButton
+            onClick={() => handleNavigation("/settings")}
+            sx={{
+              borderRadius: 1,
+              py: 0.75,
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <SettingsIcon />
+            </ListItemIcon>
+            <ListItemText primary="הגדרות" />
+          </ListItemButton>
+        </ListItem>
       </Box>
     </Box>
-  );
+  )
+
+  return (
+    <>
+      {/* Mobile menu button */}
+      {isMobile && mobileMenuButton}
+
+      {/* Mobile drawer */}
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 250 },
+          zIndex: 1300,
+        }}
+      >
+        {drawerContent}
+      </Drawer>
+
+      {/* Desktop drawer */}
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: { xs: "none", md: "block" },
+          width: 250,
+          flexShrink: 0,
+          position: "fixed",
+          zIndex: 1100,
+          height: "100%",
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: 250,
+            borderRight: "1px solid",
+            borderColor: "divider",
+            position: "fixed",
+            height: "100%",
+          },
+        }}
+        open
+      >
+        {drawerContent}
+      </Drawer>
+    </>
+  )
 }
+

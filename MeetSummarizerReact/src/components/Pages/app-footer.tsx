@@ -1,59 +1,113 @@
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Heart, Twitter } from "lucide-react"
-import Link from "next/link"
+"use client"
+
+import { Box, Container, Typography, Link, IconButton, Divider, useMediaQuery, useTheme } from "@mui/material"
+import { GitHub as GitHubIcon, Twitter as TwitterIcon, LinkedIn as LinkedInIcon } from "@mui/icons-material"
 
 export function AppFooter() {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"))
+
   return (
-    <footer className="w-full border-t bg-background/80 backdrop-blur-sm">
-      <div className="container flex flex-col items-center justify-between gap-4 py-6 md:h-20 md:flex-row md:py-0">
-        <div className="flex flex-col items-center gap-4 md:flex-row md:gap-2">
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © 2025 MeetingFiles. All rights reserved.
-          </p>
+    <Box
+      component="footer"
+      sx={{
+        py: 3,
+        px: 2,
+        mt: "auto",
+        bgcolor: "background.paper",
+        borderTop: "1px solid",
+        borderColor: "divider",
+        width: { xs: "100%", md: "calc(100% - 250px)" },
+        ml: { xs: 0, md: "250px" },
+        boxSizing: "border-box",
+        transition: "margin 0.3s, width 0.3s",
+      }}
+    >
+      <Container
+        maxWidth={false}
+        disableGutters
+        sx={{
+          px: { xs: 2, sm: 3 },
+          width: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            justifyContent: "space-between",
+            alignItems: isMobile ? "center" : "flex-start",
+            gap: 2,
+          }}
+        >
+          <Box sx={{ textAlign: isMobile ? "center" : "left" }}>
+            <Typography variant="h6" color="text.primary" gutterBottom sx={{ fontWeight: 600 }}>
+              MeetingFiles
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              מערכת לניהול פגישות וקבצים
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              © {new Date().getFullYear()} כל הזכויות שמורות
+            </Typography>
+          </Box>
 
-          <div className="flex items-center">
-            <div className="animate-pulse mx-1">
-              <Heart className="h-3 w-3 text-red-500" />
-            </div>
-            <span className="text-sm text-muted-foreground">Built with care</span>
-          </div>
-        </div>
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: isMobile ? "center" : "flex-end" }}>
+            <Box sx={{ display: "flex", gap: 1, mb: 1 }}>
+              <IconButton
+                size="small"
+                aria-label="GitHub"
+                component="a"
+                href="https://github.com/yaeli-5261"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: "text.secondary",
+                  "&:hover": {
+                    color: "#10a37f",
+                  },
+                }}
+              >
+                <GitHubIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" aria-label="Twitter" sx={{ color: "text.secondary" }}>
+                <TwitterIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" aria-label="LinkedIn" sx={{ color: "text.secondary" }}>
+                <LinkedInIcon fontSize="small" />
+              </IconButton>
+            </Box>
 
-        <div className="flex items-center gap-1">
-          <div className="hidden md:flex">
-            <div className="h-8 w-px bg-border mx-4"></div>
-          </div>
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", justifyContent: "center" }}>
+              <Link href="#" underline="hover" color="text.secondary" variant="body2">
+                עזרה ותמיכה
+              </Link>
+              <Link href="#" underline="hover" color="text.secondary" variant="body2">
+                תנאי שימוש
+              </Link>
+              <Link href="#" underline="hover" color="text.secondary" variant="body2">
+                פרטיות
+              </Link>
+            </Box>
+          </Box>
+        </Box>
 
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full transition-transform hover:scale-110 duration-300"
-            >
-              <Twitter className="h-4 w-4" />
-              <span className="sr-only">Twitter</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full transition-transform hover:scale-110 duration-300"
-            >
-              <Github className="h-4 w-4" />
-              <span className="sr-only">GitHub</span>
-            </Button>
-            <Link
-              href="/docs"
-              className="group flex items-center text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <span>Documentation</span>
-              <ExternalLink className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </div>
-      </div>
+        <Divider sx={{ my: 2 }} />
 
-      <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-teal-400 to-blue-500 bg-[length:200%_100%] animate-gradient"></div>
-    </footer>
+        <Box
+          sx={{
+            width: "100%",
+            height: 3,
+            background: "linear-gradient(90deg, #10a37f 0%, #0e8a6c 100%)",
+            borderRadius: 1,
+            opacity: 0.7,
+          }}
+        />
+      </Container>
+    </Box>
   )
 }
+
+
 
