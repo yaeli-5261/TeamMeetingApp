@@ -267,7 +267,7 @@ export default function AddMeetingForm() {
                 קישורים לקבצים (אופציונלי)
               </Typography>
 
-              <TextField
+              {/* <TextField
                 label="קישור לקובץ תמלול"
                 name="linkTranscriptFile"
                 value={meetingData.linkTranscriptFile}
@@ -283,7 +283,7 @@ export default function AddMeetingForm() {
                   ),
                 }}
                 sx={{ mb: 2 }}
-              />
+              /> */}
 
               <TextField
                 label="קישור לקובץ מקורי"

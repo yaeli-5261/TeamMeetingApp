@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1Tckso4mqI4=",
+  "dgSpecHash": "L2m9vAIXTqY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizer.Core\\MeetSummarizer.Core.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizer.Core\\MeetSummarizer.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",

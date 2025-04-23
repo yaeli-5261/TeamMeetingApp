@@ -8,8 +8,10 @@ import { useParams } from "react-router-dom"
 import type { AppDispatch, RootState } from "../../store/store"
 import { fetchMeetingsByTeam } from "../../store/meetingSlice"
 import mammoth from "mammoth"
+import AIUploader from "../AIuploader"
 
 export const FileUploader = () => {
+  
   const [file, setFile] = useState<File | null>(null)
   const [progress, setProgress] = useState<number>(0)
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null)
@@ -63,60 +65,152 @@ export const FileUploader = () => {
   }
 
   const handleUpload = async () => {
-    if (!file || !meetingId) {
-      setError("❌ יש לבחור קובץ ולהיות בתוך פגישה.")
+    if (!file) {
+      setError("❗ יש לבחור קובץ לפני ההעלאה")
       return
     }
-
+  
+    setIsUploading(true)
+    setError("")
     try {
-      setIsUploading(true)
-      setProgress(0)
-
-      const response = await axios.get("https://localhost:7214/api/upload/presigned-url", {
-        params: { fileName: `${meeting?.teamId}/${file.name}`, contentType: file.type },
-        headers: { Authorization: `Bearer ${getCookie("auth_token")}` },
-      })
-
-      const presignedUrl = response.data.url
-
-      await axios.put(presignedUrl, file, {
-        headers: { "Content-Type": file.type },
-        onUploadProgress: (progressEvent) => {
-          setProgress(Math.round((progressEvent.loaded * 100) / (progressEvent.total || 1)))
+      // 1️⃣ שלב ראשון: העלאה ל-S3
+      const uploadUrl = "https://your-s3-upload-url.com"; // Replace with your actual S3 upload URL
+      const s3Response = await axios.put(uploadUrl, file, {
+        headers: {
+          "Content-Type": file.type,
         },
       })
-
-      const fileMetadata = {
-        MeetingId: Number(meetingId),
-        FileUrl: `${meeting?.teamId}/${file.name}`,
-        IsTranscript: false,
-      }
-
-      await axios.put("https://localhost:7214/api/Meeting/update-meeting-file", fileMetadata, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  
+      console.log("✅ קובץ הועלה ל-S3")
+  
+      // 2️⃣ שלב שני: שליחה ל-Flask לניתוח AI
+      const formData = new FormData()
+      formData.append("file", file)
+  
+      const aiResponse = await axios.post("http://localhost:5000/uploads", formData, {
+        params: {
+          team_id: meeting?.teamId || "default_team", // שילוב teamId
+        },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
-
-      const downloadResponse = await axios.get("https://localhost:7214/api/upload/download-url", {
-        params: { fileName: `${meeting?.teamId}/${file.name}` },
-        headers: { Authorization: `Bearer ${getCookie("auth_token")}` },
-      })
-
-      setDownloadUrl(downloadResponse.data.downloadUrl)
-
-      // Refresh meeting data to update the file link
-      dispatch(fetchMeetingsByTeam({ teamId: meeting?.teamId || 0 }))
-
-      setError(null)
-
-      // Automatically show preview after upload
-      handleViewFile()
-    } catch (error: any) {
-      setError(`❌ שגיאה בהעלאה: ${error.response?.data || error.message}`)
-      console.error("❌ שגיאה בהעלאה:", error.response?.data || error.message)
+  
+      const { summary, file_url } = aiResponse.data
+  
+      console.log("📄 סיכום:", summary)
+      console.log("🔗 קובץ מסכם:", file_url)
+  
+      // 3️⃣ עדכון UI / שמירת קובץ מסכם
+      setDownloadUrl(file_url)
+  
+    } catch (error) {
+      console.error("❌ שגיאה בתהליך ההעלאה והניתוח:", error)
+      setError("⚠️ אירעה שגיאה במהלך העלאת הקובץ או בניתוחו")
     } finally {
-      setIsUploading(false)
+      setIsLoading(false)
     }
   }
+  
+///////////////////////
+
+
+
+
+
+const handleAnalyze = async () => {
+  if (!fileName || !meeting?.teamId || !meeting?.name) return
+
+  try {
+    setIsUploading(true)
+    setError(null)
+
+    const analyzeResponse = await axios.post("http://localhost:5000/analyze-file", {
+      fileKey: `${meeting.teamId}/${meeting.name}.docx`,
+    })
+
+    const summaryKey = analyzeResponse.data.summaryKey
+    console.log("🔍 קובץ הסיכום נוצר:", summaryKey)
+
+    const downloadSummaryResponse = await axios.get("https://localhost:7214/api/upload/download-url", {
+      params: { fileName: summaryKey },
+      headers: { Authorization: `Bearer ${getCookie("auth_token")}` },
+    })
+
+    const summaryDownloadUrl = downloadSummaryResponse.data.downloadUrl
+
+    const fileType = summaryKey.split(".").pop()?.toLowerCase() || ""
+    const summaryFileResponse = await axios.get(summaryDownloadUrl, {
+      responseType: "arraybuffer",
+    })
+
+    let content
+    if (fileType === "docx") {
+      const { value } = await mammoth.convertToHtml({ arrayBuffer: summaryFileResponse.data })
+      content = value
+    } else if (fileType === "txt") {
+      const decoder = new TextDecoder("utf-8")
+      content = decoder.decode(summaryFileResponse.data)
+    }
+
+    const blobUrl = window.URL.createObjectURL(new Blob([summaryFileResponse.data], { type: getMimeType(fileType) }))
+
+    setFilePreview({
+      url: blobUrl,
+      type: fileType,
+      content,
+    })
+
+    setIsPreviewOpen(true)
+    setError("✅ הסיכום מוכן ונצפה בהצלחה")
+  } catch (error) {
+    console.error("❌ שגיאה בניתוח הקובץ:", error)
+    setError("❌ שגיאה בניתוח הקובץ")
+  } finally {
+    setIsUploading(false)
+  }
+}
+
+
+// const handleAnalyze = async () => {
+//   if (!fileName || !meeting?.teamId || !meeting?.name) return
+
+//   try {
+//     const response = await axios.post("http://localhost:5000/analyze-file", {
+//       fileKey: `${meeting.teamId}/${meeting.name}.docx`,
+//     })
+
+//     const summaryKey = response.data.summaryKey
+//     console.log("🔍 קובץ הסיכום נוצר:", summaryKey)
+//   } catch (error) {
+//     console.error("❌ שגיאה בניתוח הקובץ:", error)
+//     setError("❌ שגיאה בניתוח הקובץ")
+//   }
+// }
+
+// const formData = new FormData();
+// formData.append("file", file || ""); 
+
+// fetch("http://localhost:5000/upload", {
+//   method: "POST",
+//   body: formData,
+// })
+// .then(res => res.json())
+// .then(data => {
+//   console.log("סיכום:", data.summary);
+//   console.log("URL בקובץ ב-S3:", data.file_url);
+// });
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////  
 
   const handleViewFile = async () => {
     if (!downloadUrl) return
@@ -310,6 +404,9 @@ export const FileUploader = () => {
   }
 
   return (
+<div>
+  {/* <AIUploader/> */}
+
     <div className="file-uploader-container">
       {error && (
         <div className={`message-box ${error.startsWith("✅") ? "success-message" : "error-message"}`}>{error}</div>
@@ -351,14 +448,7 @@ export const FileUploader = () => {
                 </button>
               )}
             </div>
-            <div className="file-card-actions">
-              <button onClick={handleViewFile} disabled={isUploading} className="view-button">
-                {isUploading ? "טוען..." : "👁️ צפה בקובץ"}
-              </button>
-              <button onClick={downloadFileToComputer} disabled={isDownloading} className="download-button">
-                {isDownloading ? `📥 מוריד... ${downloadProgress}%` : "📥 הורד"}
-              </button>
-            </div>
+          
 
             {isDownloading && downloadProgress > 0 && (
               <div className="download-progress-container">
@@ -383,6 +473,21 @@ export const FileUploader = () => {
         </div>
       )}
 
+
+<button onClick={handleAnalyze} disabled={isUploading || !downloadUrl} className="analyze-button">
+  🔍 נתח את הקובץ
+</button>
+
+
+{downloadUrl && (
+  <a href={downloadUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-4">
+    📄 הורד את הקובץ המסכם
+  </a>
+)}
+
+
+
+{/*  */}
       <style>{`
         .file-uploader-container {
           padding: 16px;
@@ -699,11 +804,12 @@ export const FileUploader = () => {
         .download-link:hover {
           background-color: #bbdefb;
           text-decoration: underline;
-        }
       `}</style>
     </div>
+  </div>
   )
 }
+
 
 // Helper functions
 function getCookie(name: string): string | null {
@@ -758,4 +864,7 @@ function getFileTypeLabel(fileType: string): string {
 }
 
 export default FileUploader
+
+
+
 

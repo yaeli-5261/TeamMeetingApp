@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m74gKy/DP3s=",
+  "dgSpecHash": "tYdTG2NPAhE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Pictures\\TeamMeetingApp-main\\MeetSummarizerAPI\\MeetSummarizerAPI\\MeetSummarizerAPI.csproj",
+  "projectFilePath": "C:\\Users\\user1\\Documents\\MyProjects\\Mypracticum\\MeetSummarizerAPI\\MeetSummarizerAPI\\MeetSummarizerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user1\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\user1\\.nuget\\packages\\awssdk.core\\4.0.0-preview.10\\awssdk.core.4.0.0-preview.10.nupkg.sha512",
