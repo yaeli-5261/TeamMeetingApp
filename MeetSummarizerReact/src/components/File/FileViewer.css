@@ -1,0 +1,56 @@
+.file-viewer-container {
+  width: 100%;
+  direction: rtl;
+}
+
+.file-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.file-preview-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+.generic-file-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+}
+
+.file-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.file-name {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.download-link {
+  color: #10a37f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .file-preview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

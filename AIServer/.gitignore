@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.log
+
+# Virtual environments
+env/
+venv/
+ENV/
+.VENV/
+
+# dotenv
+.env
+
+# PyInstaller
+dist/
+build/
+
+# VS Code settings
+.vscode/
+

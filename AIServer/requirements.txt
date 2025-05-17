@@ -1,0 +1,5 @@
+Flask
+openai
+boto3
+python-docx
+PyPDF2

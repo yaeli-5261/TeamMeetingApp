@@ -1,0 +1,6 @@
+@MeetSummarizerAPI_HostAddress = http://localhost:5010
+
+GET {{MeetSummarizerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
